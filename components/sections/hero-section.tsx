@@ -37,18 +37,14 @@ export function HeroSection() {
         </div>
 
         <div className="relative mx-auto w-full max-w-[32rem] lg:justify-self-end">
-          <div className="pointer-events-none absolute inset-x-6 bottom-2 h-20 rounded-full bg-[var(--hero-wave)]/70 blur-2xl" />
-          <div className="relative overflow-hidden rounded-[2rem] bg-[linear-gradient(175deg,rgba(255,255,255,0.62)_0%,rgba(255,255,255,0.1)_65%,rgba(36,63,143,0.08)_100%)] p-4 sm:p-6">
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#9adcf4]/70 via-[#9adcf4]/28 to-transparent" />
-            <Image
-              src="/prof.png"
-              alt="Pessoa sorrindo representando alunos de inglês"
-              width={400}
-              height={500}
-              priority
-              className="relative z-10 mx-auto h-auto w-full max-w-[24rem] object-contain"
-            />
-          </div>
+          <Image
+            src="/prof.png"
+            alt="Pessoa sorrindo representando alunos de inglês"
+            width={400}
+            height={500}
+            priority
+            className="relative z-10 mx-auto h-auto w-full max-w-[28rem] object-contain"
+          />
         </div>
       </Container>
     </section>
