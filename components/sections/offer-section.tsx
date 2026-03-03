@@ -7,7 +7,6 @@ import { offer } from "@/lib/content";
 export function OfferSection() {
   return (
     <section
-      id="para-empresa"
       className="bg-[linear-gradient(145deg,#ff3a67_0%,#f42857_46%,#df1745_100%)] py-16 text-white sm:py-20"
     >
       <Container className="grid gap-8 lg:grid-cols-[1fr_400px]">
@@ -48,7 +47,6 @@ export function OfferSection() {
           </div>
 
           <article
-            id="para-criancas"
             className="rounded-2xl border border-white/30 bg-white/12 p-4"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-yellow)]">

@@ -4,7 +4,7 @@ import { faqItems } from "@/lib/content";
 
 export function FaqSection() {
   return (
-    <section className="bg-[var(--sand)] py-16 sm:py-20">
+    <section id="faq" className="bg-[var(--sand)] py-16 sm:py-20">
       <Container className="space-y-10">
         <SectionTitle
           eyebrow="FAQ"

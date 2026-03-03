@@ -12,10 +12,10 @@ import type {
 
 export const navItems: NavItem[] = [
   { label: "Para Você", href: "#para-voce" },
-  { label: "Para Crianças", href: "#para-criancas" },
-  { label: "Para Sua Empresa", href: "#para-empresa" },
   { label: "O Curso", href: "#cursos" },
-  { label: "Como Funciona", href: "#como-funciona" },
+  { label: "Diferenciais", href: "#diferenciais" },
+  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export const heroContent: HeroContent = {
@@ -43,9 +43,9 @@ export const heroContent: HeroContent = {
 export const courses: CourseItem[] = [
   {
     id: "viagem",
-    name: "Viagem",
+    name: "Inglês para Viagem",
     description:
-      "Frases úteis, situações de aeroporto, hotel e restaurantes para você viajar sem travar e com segurança.",
+      "Prepare-se para aeroportos, hotéis e passeios.",
     icon: "travel",
     theme: {
       background:
@@ -55,9 +55,9 @@ export const courses: CourseItem[] = [
   },
   {
     id: "tecnologia",
-    name: "Tecnologia",
+    name: "Inglês Tecnológico",
     description:
-      "Vocabulário técnico para reuniões, documentação, code review e comunicação global em times de produto e engenharia.",
+      "Inglês para TI e mercado digital.",
     icon: "technology",
     theme: {
       background:
@@ -67,9 +67,9 @@ export const courses: CourseItem[] = [
   },
   {
     id: "conversacao",
-    name: "Conversação",
+    name: "Inglês Conversação",
     description:
-      "Treinos guiados para destravar a fala, melhorar pronúncia e responder com naturalidade em contextos reais.",
+      "Fale inglês com confiança no dia a dia.",
     icon: "conversation",
     theme: {
       background:
@@ -78,10 +78,10 @@ export const courses: CourseItem[] = [
     },
   },
   {
-    id: "negocios",
-    name: "Negócios",
+    id: "basico",
+    name: "Inglês Básico",
     description:
-      "Inglês corporativo para apresentações, negociações, networking e comunicação com clientes internacionais.",
+      "Comece do zero e aprenda o essencial.",
     icon: "business",
     theme: {
       background:
@@ -90,10 +90,10 @@ export const courses: CourseItem[] = [
     },
   },
   {
-    id: "certificacoes",
-    name: "Provas",
+    id: "intermediario",
+    name: "Inglês Intermediário",
     description:
-      "Preparação focada para certificações com simulados, estratégia de prova e acompanhamento de desempenho.",
+      "Aprimore seu vocabulário e fluência.",
     icon: "certification",
     theme: {
       background:
@@ -102,34 +102,16 @@ export const courses: CourseItem[] = [
     },
   },
   {
-    id: "criancas",
-    name: "Crianças",
+    id: "avancado",
+    name: "Inglês Avançado",
     description:
-      "Metodologia lúdica com atividades interativas para construir base sólida e tornar o inglês parte da rotina.",
+      "Alcance a fluência em inglês.",
     icon: "kids",
     theme: {
       background:
         "radial-gradient(circle at 30% 20%, #fff3cf, #ffd777 45%, #e09d22 100%)",
       ringColor: "#ffe3a0",
     },
-  },
-];
-
-export const howItWorksSteps: StepItem[] = [
-  {
-    title: "1. Diagnóstico rápido",
-    description:
-      "Você responde um formulário curto e fazemos um mapeamento de nível, objetivos e rotina disponível.",
-  },
-  {
-    title: "2. Plano personalizado",
-    description:
-      "Montamos trilha de aulas, materiais e exercícios com metas semanais claras e acompanhamento próximo.",
-  },
-  {
-    title: "3. Evolução contínua",
-    description:
-      "Você recebe feedback frequente, ajustes de rota e suporte de IA para ganhar ritmo e manter constância.",
   },
 ];
 

@@ -4,7 +4,7 @@ import { testimonials } from "@/lib/content";
 
 export function TestimonialsSection() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section id="depoimentos" className="bg-white py-16 sm:py-20">
       <Container className="space-y-10">
         <SectionTitle
           eyebrow="Depoimentos"

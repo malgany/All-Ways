@@ -4,11 +4,11 @@ import { benefits } from "@/lib/content";
 
 export function BenefitsSection() {
   return (
-    <section className="bg-[var(--sand)] py-16 sm:py-20">
+    <section id="diferenciais" className="bg-[var(--sand)] py-16 sm:py-20">
       <Container className="space-y-10">
         <SectionTitle
           eyebrow="Benefícios"
-          title="Estrutura para manter consistência e acelerar resultado."
+          title="A estrutura completa que acelera sua fluência e mantém sua constância."
           description="Tudo o que você precisa para estudar com clareza, ritmo e acompanhamento."
         />
 

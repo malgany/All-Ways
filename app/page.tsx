@@ -1,9 +1,7 @@
 import { BenefitsSection } from "@/components/sections/benefits-section";
-import { BrandsSection } from "@/components/sections/brands-section";
 import { CoursesSection } from "@/components/sections/courses-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { HeroSection } from "@/components/sections/hero-section";
-import { HowItWorksSection } from "@/components/sections/how-it-works-section";
 import { OfferSection } from "@/components/sections/offer-section";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
@@ -16,10 +14,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <CoursesSection />
-        <HowItWorksSection />
         <BenefitsSection />
         <TestimonialsSection />
-        <BrandsSection />
         <OfferSection />
         <FaqSection />
       </main>
