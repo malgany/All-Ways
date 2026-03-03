@@ -23,10 +23,6 @@ export const heroContent: HeroContent = {
   subheadline:
     "Aulas online com professores e suporte de IA para acelerar seu aprendizado.",
   ctaLabel: "Comece agora",
-  image: {
-    src: "/assets/instructor-placeholder.svg",
-    alt: "Instrutor da Web English",
-  },
   rotatingPhrases: [
     "Inglês para viagens sem travar",
     "Inglês para tecnologia e carreira",

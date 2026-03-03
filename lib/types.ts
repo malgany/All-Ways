@@ -8,10 +8,6 @@ export type HeroContent = {
   subheadline: string;
   ctaLabel: string;
   rotatingPhrases: string[];
-  image: {
-    src: string;
-    alt: string;
-  };
 };
 
 export type CourseIconKey =

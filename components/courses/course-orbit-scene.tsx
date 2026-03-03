@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type MutableRefObject } from "react";
 import * as THREE from "three";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { cn } from "@/lib/cn";
@@ -8,6 +8,7 @@ import { cn } from "@/lib/cn";
 type CourseOrbitSceneProps = {
   activeCourseId: string;
   activeColor: string;
+  scrollProgressRef: MutableRefObject<number>;
   className?: string;
 };
 
@@ -73,6 +74,7 @@ function placeOnOrbit(sprite: THREE.Sprite, angle: number, xOffset = 0) {
 export function CourseOrbitScene({
   activeCourseId,
   activeColor,
+  scrollProgressRef,
   className,
 }: CourseOrbitSceneProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -200,19 +202,17 @@ export function CourseOrbitScene({
     resizeObserver.observe(container);
     resize();
 
-    const clock = new THREE.Clock();
     const render = () => {
       if (isDisposed) {
         return;
       }
 
-      const elapsed = clock.getElapsedTime();
-      const orbitAngle = elapsed * (prefersReducedMotion ? 0.3 : 0.95);
+      const orbitAngle = scrollProgressRef.current * Math.PI * 2;
 
       if (!prefersReducedMotion) {
-        sphere.rotation.y = elapsed * 0.42;
-        sphere.rotation.x = Math.sin(elapsed * 0.25) * 0.08;
-        halo.scale.setScalar(1 + Math.sin(elapsed * 1.05) * 0.015);
+        sphere.rotation.y = orbitAngle * 0.4;
+        sphere.rotation.x = Math.sin(orbitAngle * 0.55) * 0.08;
+        halo.scale.setScalar(1 + Math.sin(orbitAngle * 0.9) * 0.015);
       }
 
       sphereMaterial.color.lerp(sphereTargetColor, prefersReducedMotion ? 0.2 : 0.09);
@@ -303,7 +303,7 @@ export function CourseOrbitScene({
       sceneControllerRef.current?.dispose();
       sceneControllerRef.current = null;
     };
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, scrollProgressRef]);
 
   return (
     <div

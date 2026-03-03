@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { RotatingPhrases } from "@/components/hero/rotating-phrases";
 import { LeadForm } from "@/components/forms/lead-form";
@@ -46,17 +45,6 @@ export function HeroSection() {
         </div>
 
         <div className="space-y-4">
-          <div className="ml-auto w-fit overflow-hidden rounded-2xl border border-white/60 bg-white/70 p-2 shadow-md">
-            <Image
-              src={heroContent.image.src}
-              alt={heroContent.image.alt}
-              width={360}
-              height={320}
-              className="h-auto w-[240px] rounded-xl object-cover sm:w-[300px]"
-              priority
-            />
-          </div>
-
           <LeadForm
             id="lead-form"
             source="hero-form"
