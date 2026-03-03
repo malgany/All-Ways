@@ -30,11 +30,11 @@ export const heroContent: HeroContent = {
       medio: "O inglês será seu diferencial",
     },
     {
-      grande: "",
+      grande: "Quer destravar seu inglês?",
       medio: 'Confiança para falar, <span class="text-[var(--brand-red)]">segurança para se expressar</span>',
     },
     {
-      grande: "",
+      grande: "Começando do zero ou buscando fluência?",
       medio: 'Do básico ao avançado <span class="text-[var(--brand-red)]">no seu ritmo</span>',
     },
   ],
