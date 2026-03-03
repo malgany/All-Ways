@@ -99,7 +99,6 @@ export function CourseOrbitScene({
     const initialColor = activeColorRef.current;
     let frameId = 0;
     let isDisposed = false;
-    const transitionMs = prefersReducedMotion ? 120 : 420;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
@@ -171,21 +170,7 @@ export function CourseOrbitScene({
     const currentEmoji = new THREE.Sprite(currentEmojiMaterial);
     currentEmoji.scale.set(1.15, 1.15, 1.15);
     orbitGroup.add(currentEmoji);
-
-    const incomingEmojiMaterial = new THREE.SpriteMaterial({
-      map: getTextureForCourse(initialCourseId),
-      transparent: true,
-      depthTest: true,
-      depthWrite: false,
-      opacity: 0,
-    });
-    const incomingEmoji = new THREE.Sprite(incomingEmojiMaterial);
-    incomingEmoji.visible = false;
-    orbitGroup.add(incomingEmoji);
-
     let currentCourseId = initialCourseId;
-    let incomingCourseId: string | null = null;
-    let transitionStartTime = 0;
     const sphereTargetColor = new THREE.Color(
       COLOR_BY_COURSE[initialCourseId] ?? initialColor,
     );
@@ -207,7 +192,8 @@ export function CourseOrbitScene({
         return;
       }
 
-      const orbitAngle = scrollProgressRef.current * Math.PI * 2;
+      // One full orbit per stage and always crossing stage boundaries behind the sphere.
+      const orbitAngle = scrollProgressRef.current * Math.PI * 2 - Math.PI / 2;
 
       if (!prefersReducedMotion) {
         sphere.rotation.y = orbitAngle * 0.4;
@@ -217,34 +203,7 @@ export function CourseOrbitScene({
 
       sphereMaterial.color.lerp(sphereTargetColor, prefersReducedMotion ? 0.2 : 0.09);
 
-      if (incomingCourseId) {
-        const progress = Math.min(
-          (performance.now() - transitionStartTime) / transitionMs,
-          1,
-        );
-        const eased = THREE.MathUtils.smoothstep(progress, 0, 1);
-
-        // Current emoji exits to the right while fading out.
-        placeOnOrbit(currentEmoji, orbitAngle + eased * 0.12, eased * 0.82);
-        currentEmojiMaterial.opacity = 1 - eased;
-
-        // Next emoji starts from behind and fades in.
-        placeOnOrbit(incomingEmoji, orbitAngle + Math.PI + (1 - eased) * 0.18);
-        incomingEmojiMaterial.opacity = eased;
-        incomingEmoji.visible = true;
-
-        if (progress >= 1) {
-          currentCourseId = incomingCourseId;
-          incomingCourseId = null;
-          currentEmojiMaterial.map = incomingEmojiMaterial.map;
-          currentEmojiMaterial.needsUpdate = true;
-          currentEmojiMaterial.opacity = 1;
-          incomingEmojiMaterial.opacity = 0;
-          incomingEmoji.visible = false;
-        }
-      } else {
-        placeOnOrbit(currentEmoji, orbitAngle);
-      }
+      placeOnOrbit(currentEmoji, orbitAngle);
 
       renderer.render(scene, camera);
       frameId = window.requestAnimationFrame(render);
@@ -257,25 +216,13 @@ export function CourseOrbitScene({
         const targetColor = COLOR_BY_COURSE[courseId] ?? color;
         sphereTargetColor.set(targetColor);
 
-        if (courseId === currentCourseId || courseId === incomingCourseId) {
+        if (courseId === currentCourseId) {
           return;
         }
 
-        incomingCourseId = courseId;
-        transitionStartTime = performance.now();
-        incomingEmojiMaterial.map = getTextureForCourse(courseId);
-        incomingEmojiMaterial.needsUpdate = true;
-        incomingEmoji.visible = true;
-
-        if (prefersReducedMotion) {
-          currentCourseId = courseId;
-          incomingCourseId = null;
-          currentEmojiMaterial.map = incomingEmojiMaterial.map;
-          currentEmojiMaterial.needsUpdate = true;
-          currentEmojiMaterial.opacity = 1;
-          incomingEmojiMaterial.opacity = 0;
-          incomingEmoji.visible = false;
-        }
+        currentCourseId = courseId;
+        currentEmojiMaterial.map = getTextureForCourse(courseId);
+        currentEmojiMaterial.needsUpdate = true;
       },
       dispose: () => {
         isDisposed = true;
@@ -283,7 +230,6 @@ export function CourseOrbitScene({
         resizeObserver.disconnect();
         textureCache.forEach((texture) => texture.dispose());
         currentEmojiMaterial.dispose();
-        incomingEmojiMaterial.dispose();
         sphereGeometry.dispose();
         sphereMaterial.dispose();
         haloGeometry.dispose();
