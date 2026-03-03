@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Web English Landing Page
 
-## Getting Started
+Landing page em Next.js + TypeScript para captação de leads e apresentação de cursos com seção dinâmica scroll-driven.
 
-First, run the development server:
+## Executar localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Configuração de integração de lead
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Crie um arquivo `.env.local`:
 
-## Learn More
+```bash
+WEBHOOK_URL=https://seu-endpoint.com/leads
+```
 
-To learn more about Next.js, take a look at the following resources:
+O formulário envia `POST` para `/api/leads`, que encaminha o payload para `WEBHOOK_URL`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Onde editar conteúdo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Textos, frases, cursos, benefícios, depoimentos, FAQ e links:
+  - `lib/content.ts`
+- Tipos dos blocos de conteúdo:
+  - `lib/types.ts`
+- Configurações globais (tempos de animação e metadados):
+  - `lib/config.ts`
 
-## Deploy on Vercel
+## Onde editar imagens e logo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Logo: `public/assets/logo.svg`
+- Foto do instrutor: `public/assets/instructor-placeholder.svg`
+- Para substituir, mantenha o mesmo nome de arquivo ou ajuste os caminhos em `lib/content.ts`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Onde alterar animações
+
+- Hero (frases rotativas):
+  - `ANIMATION_CONFIG.heroRotation.intervalMs`
+  - `ANIMATION_CONFIG.heroRotation.fadeMs`
+- Seção dinâmica de cursos (distância por etapa):
+  - `ANIMATION_CONFIG.coursesScroll.stepScrollPx`
+
+## Estrutura principal
+
+- Página: `app/page.tsx`
+- Header/Footer: `components/sections/site-header.tsx`, `components/sections/site-footer.tsx`
+- Hero: `components/sections/hero-section.tsx`
+- Cursos:
+  - Desktop scroll-driven: `components/courses/courses-scroll.tsx`
+  - Mobile fallback (carrossel): `components/courses/courses-carousel.tsx`
+  - Reduced motion (lista): `components/courses/courses-static.tsx`
+- Formulário de lead: `components/forms/lead-form.tsx`
