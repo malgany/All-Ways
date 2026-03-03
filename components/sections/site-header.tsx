@@ -18,7 +18,13 @@ export function SiteHeader() {
           className="inline-flex items-center gap-3"
           onClick={() => setMobileOpen(false)}
         >
-          <Image src="/assets/logo.svg" alt="Web English" width={170} height={42} />
+          <Image
+            src="/logos/logo.png"
+            alt="Web English"
+            width={196}
+            height={48}
+            className="h-11 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -85,7 +91,12 @@ export function SiteHeader() {
           mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
         )}
       >
-        <Container className="overflow-hidden py-4">
+        <Container
+          className={cn(
+            "overflow-hidden transition-[padding] duration-200",
+            mobileOpen ? "py-4" : "py-0",
+          )}
+        >
           <nav className="flex flex-col gap-3">
             {navItems.map((item) => (
               <Link

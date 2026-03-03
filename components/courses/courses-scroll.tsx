@@ -108,8 +108,8 @@ export function CoursesScroll({ courses }: CoursesScrollProps) {
               6 trilhas para objetivos diferentes.
             </h2>
             <p className="max-w-lg text-base text-white/80">
-              Role e acompanhe cada curso: a esfera 3D muda de cor e o emoji orbital
-              troca conforme o objetivo.
+              Role e acompanhe cada curso: o planeta Terra fica ao centro e o
+              emoji orbital troca conforme o objetivo.
             </p>
           </div>
 
@@ -117,7 +117,6 @@ export function CoursesScroll({ courses }: CoursesScrollProps) {
             <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_30%_15%,rgba(255,255,255,0.24),rgba(255,255,255,0.02)_60%)]" />
             <CourseOrbitScene
               activeCourseId={activeCourse.id}
-              activeColor={activeCourse.theme.ringColor}
               scrollProgressRef={orbitProgressRef}
               className="absolute inset-0"
             />

@@ -33,6 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body
         suppressHydrationWarning
         className={`${displayFont.variable} ${bodyFont.variable} antialiased`}

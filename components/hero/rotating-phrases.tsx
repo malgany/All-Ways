@@ -5,14 +5,14 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { cn } from "@/lib/cn";
 
 type RotatingPhrasesProps = {
-  phrases: string[];
+  items: { grande: string; medio: string }[];
   intervalMs: number;
   fadeMs: number;
   className?: string;
 };
 
 export function RotatingPhrases({
-  phrases,
+  items,
   intervalMs,
   fadeMs,
   className,
@@ -23,14 +23,14 @@ export function RotatingPhrases({
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion || phrases.length <= 1) {
+    if (prefersReducedMotion || items.length <= 1) {
       return undefined;
     }
 
     const intervalId = window.setInterval(() => {
       setIsFadingOut(true);
       timeoutRef.current = window.setTimeout(() => {
-        setActiveIndex((current) => (current + 1) % phrases.length);
+        setActiveIndex((current) => (current + 1) % items.length);
         setIsFadingOut(false);
       }, fadeMs);
     }, intervalMs);
@@ -41,20 +41,31 @@ export function RotatingPhrases({
         window.clearTimeout(timeoutRef.current);
       }
     };
-  }, [fadeMs, intervalMs, phrases.length, prefersReducedMotion]);
+  }, [fadeMs, intervalMs, items.length, prefersReducedMotion]);
+
+  const animationClasses = isFadingOut
+    ? "translate-y-1 opacity-0"
+    : "translate-y-0 opacity-100";
+  const transitionStyle = { transitionDuration: `${fadeMs}ms` };
 
   if (prefersReducedMotion) {
     return (
       <div
         className={cn(
-          "max-h-44 overflow-auto rounded-xl border border-[var(--sand-strong)] bg-white/65 px-4 py-3",
+          "max-h-[60vh] overflow-auto rounded-xl border border-[var(--sand-strong)] bg-white/65 px-4 py-3",
           className,
         )}
       >
-        <ul className="space-y-1.5" aria-label="Frases de destaque">
-          {phrases.map((phrase) => (
-            <li key={phrase} className="text-lg font-extrabold text-[var(--brand-blue)]">
-              {phrase}
+        <ul className="space-y-6" aria-label="Destaques">
+          {items.map((item, idx) => (
+            <li key={idx} className="space-y-2">
+              <h2 className="font-display text-3xl text-[var(--brand-blue)]">
+                {item.grande}
+              </h2>
+              <p
+                className="text-lg font-extrabold text-[var(--brand-blue)]"
+                dangerouslySetInnerHTML={{ __html: item.medio }}
+              />
             </li>
           ))}
         </ul>
@@ -63,22 +74,27 @@ export function RotatingPhrases({
   }
 
   return (
-    <div
-      className={cn(
-        "min-h-[2.7rem] rounded-xl bg-white/45 px-3 py-2",
-        className,
+    <div className={cn("space-y-6", className)} aria-live="polite">
+      {items[activeIndex].grande && (
+        <h1
+          className={cn(
+            "font-display text-[clamp(2.6rem,6.5vw,5rem)] leading-[0.95] tracking-tight text-[var(--brand-blue)] transition-[opacity,transform]",
+            animationClasses,
+          )}
+          style={transitionStyle}
+          dangerouslySetInnerHTML={{ __html: items[activeIndex].grande }}
+        />
       )}
-      aria-live="polite"
-    >
+
       <p
         className={cn(
-          "text-[1.45rem] font-extrabold text-[var(--brand-blue)] transition-[opacity,transform] sm:text-[1.65rem]",
-          isFadingOut ? "translate-y-1 opacity-0" : "translate-y-0 opacity-100",
+          "max-w-2xl text-[clamp(1.25rem,2vw,2.05rem)] font-extrabold leading-snug text-[var(--brand-blue)] transition-[opacity,transform]",
+          animationClasses,
+          !items[activeIndex].grande && "pt-8", // Adiciona padding se não houver título grande para manter um pouco da estrutura
         )}
-        style={{ transitionDuration: `${fadeMs}ms` }}
-      >
-        {phrases[activeIndex]}
-      </p>
+        style={transitionStyle}
+        dangerouslySetInnerHTML={{ __html: items[activeIndex].medio }}
+      />
     </div>
   );
 }

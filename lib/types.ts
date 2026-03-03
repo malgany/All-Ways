@@ -4,10 +4,11 @@ export type NavItem = {
 };
 
 export type HeroContent = {
-  headline: string;
-  subheadline: string;
   ctaLabel: string;
-  rotatingPhrases: string[];
+  heroPairs: {
+    grande: string;
+    medio: string;
+  }[];
 };
 
 export type CourseIconKey =

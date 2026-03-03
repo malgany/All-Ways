@@ -9,27 +9,15 @@ export function HeroSection() {
   return (
     <section
       id="para-voce"
-      className="relative overflow-hidden bg-[var(--hero-pink)] pt-[8.5rem] pb-14 sm:pt-[9.5rem] sm:pb-[4.5rem]"
+      className="relative overflow-hidden bg-white pt-[8.5rem] pb-14 sm:pt-[9.5rem] sm:pb-[4.5rem]"
     >
       <div className="pointer-events-none absolute right-[-20rem] bottom-[-18rem] h-[44rem] w-[72rem] rounded-[50%] bg-[var(--hero-wave)]" />
       <div className="pointer-events-none absolute left-[-26rem] bottom-[-22rem] h-[36rem] w-[68rem] rounded-[50%] bg-[var(--hero-wave-soft)]/65" />
 
       <Container className="relative z-10 grid gap-8 lg:grid-cols-[1fr_430px] lg:items-start">
         <div className="max-w-3xl space-y-6">
-          <h1 className="font-display text-[clamp(2.6rem,6.5vw,5rem)] leading-[0.95] tracking-tight text-[var(--brand-blue)]">
-            Ganhe confiança no{" "}
-            <span className="text-[var(--brand-red)]">inglês:</span>
-          </h1>
-
-          <p className="max-w-2xl text-[clamp(1.25rem,2vw,2.05rem)] font-extrabold leading-snug text-[var(--brand-blue)]">
-            Tenha aulas online com{" "}
-            <span className="text-[var(--brand-red)]">
-              Professores Nativos & Inteligência Artificial!
-            </span>
-          </p>
-
           <RotatingPhrases
-            phrases={heroContent.rotatingPhrases}
+            items={heroContent.heroPairs}
             intervalMs={ANIMATION_CONFIG.heroRotation.intervalMs}
             fadeMs={ANIMATION_CONFIG.heroRotation.fadeMs}
           />

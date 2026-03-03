@@ -1,16 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { contacts, socialLinks } from "@/lib/content";
 
 export function SiteFooter() {
   return (
     <footer className="bg-[var(--brand-navy)] py-12 text-white">
-      <div className="bg-[var(--brand-red)] py-2 text-center text-xs font-extrabold uppercase tracking-[0.08em] text-white">
-        Você está pronto para falar inglês com confiança?
-      </div>
-      <Container className="grid gap-8 pt-10 md:grid-cols-[1.2fr_1fr_1fr]">
-        <div className="space-y-3">
-          <h2 className="font-display text-3xl text-[var(--brand-yellow)]">Web English</h2>
+      <Container className="grid gap-8 md:grid-cols-[1.2fr_1fr_1fr]">
+        <div className="space-y-4">
+          <Link href="#para-voce" className="inline-block">
+            <Image
+              src="/logos/logo-white.png"
+              alt="Web English"
+              width={196}
+              height={48}
+              className="h-11 w-auto object-contain"
+            />
+          </Link>
           <p className="max-w-sm text-sm text-white/75">
             Escola online de inglês com foco em resultado prático para carreira,
             viagens e vida real.

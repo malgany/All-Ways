@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
 
 export const ANIMATION_CONFIG = {
   heroRotation: {
-    intervalMs: 3000,
+    intervalMs: 7000,
     fadeMs: 400,
   },
   coursesScroll: {
