@@ -21,9 +21,9 @@ export function SiteHeader() {
           <Image
             src="/logos/logo.png"
             alt="Web English"
-            width={196}
-            height={48}
-            className="h-11 w-auto object-contain"
+            width={228}
+            height={56}
+            className="h-[3.15rem] w-auto object-contain sm:h-[3.35rem]"
           />
         </Link>
 

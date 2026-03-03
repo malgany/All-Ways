@@ -59,11 +59,11 @@ export function RotatingPhrases({
         <ul className="space-y-6" aria-label="Destaques">
           {items.map((item, idx) => (
             <li key={idx} className="space-y-2">
-              <h2 className="font-display text-3xl text-[var(--brand-blue)]">
+              <h2 className="font-display text-[2rem] leading-tight text-[var(--brand-blue)]">
                 {item.grande}
               </h2>
               <p
-                className="text-lg font-extrabold text-[var(--brand-blue)]"
+                className="text-[1.1rem] font-bold text-[var(--brand-blue)]"
                 dangerouslySetInnerHTML={{ __html: item.medio }}
               />
             </li>
@@ -74,11 +74,11 @@ export function RotatingPhrases({
   }
 
   return (
-    <div className={cn("space-y-6", className)} aria-live="polite">
+    <div className={cn("space-y-4", className)} aria-live="polite">
       {items[activeIndex].grande && (
         <h1
           className={cn(
-            "font-display text-[clamp(2.6rem,6.5vw,5rem)] leading-[0.95] tracking-tight text-[var(--brand-blue)] transition-[opacity,transform]",
+            "font-display text-[clamp(2.2rem,5vw,4rem)] leading-[0.98] tracking-tight text-[var(--brand-blue)] transition-[opacity,transform]",
             animationClasses,
           )}
           style={transitionStyle}
@@ -88,9 +88,9 @@ export function RotatingPhrases({
 
       <p
         className={cn(
-          "max-w-2xl text-[clamp(1.25rem,2vw,2.05rem)] font-extrabold leading-snug text-[var(--brand-blue)] transition-[opacity,transform]",
+          "max-w-xl text-[clamp(1.05rem,1.6vw,1.45rem)] font-semibold leading-snug text-[var(--brand-blue)] transition-[opacity,transform]",
           animationClasses,
-          !items[activeIndex].grande && "pt-8", // Adiciona padding se não houver título grande para manter um pouco da estrutura
+          !items[activeIndex].grande && "pt-8",
         )}
         style={transitionStyle}
         dangerouslySetInnerHTML={{ __html: items[activeIndex].medio }}

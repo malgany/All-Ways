@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+const phoneSchema = z
+  .string()
+  .trim()
+  .transform((value) => value.replace(/\D/g, ""))
+  .refine(
+    (digits) => digits.length === 10 || digits.length === 11,
+    "Informe um telefone/WhatsApp com DDD.",
+  );
+
 export const leadSchema = z.object({
   name: z
     .string()
@@ -11,11 +20,7 @@ export const leadSchema = z.object({
     .trim()
     .email("Informe um e-mail válido.")
     .max(120, "E-mail muito longo."),
-  phone: z
-    .string()
-    .trim()
-    .min(10, "Informe um telefone com DDD.")
-    .max(20, "Telefone inválido."),
+  phone: phoneSchema,
   source: z.string().trim().max(100).optional(),
 });
 
