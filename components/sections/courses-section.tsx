@@ -53,7 +53,7 @@ export function CoursesSection() {
   }, [emblaApi]);
 
   return (
-    <section id="cursos" className="bg-[var(--sand)] py-16 sm:py-24 overflow-hidden">
+    <section id="cursos" className="bg-white py-16 sm:py-24 overflow-hidden">
       <Container className="space-y-12">
         <SectionTitle
           eyebrow="O Curso"
@@ -70,7 +70,7 @@ export function CoursesSection() {
                   key={course.id}
                   className="min-w-0 flex-[0_0_100%] pl-6 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%]"
                 >
-                  <div className="flex h-full flex-col items-center text-center bg-white rounded-2xl shadow-sm border border-[var(--sand-strong)] hover:border-[var(--brand-blue)] hover:shadow-md transition-all duration-300 p-10 group/card">
+                  <div className="flex h-full flex-col items-center text-center bg-[var(--sand)] rounded-2xl shadow-sm border border-[var(--sand-strong)] hover:border-[var(--brand-blue)] hover:shadow-md transition-all duration-300 p-10 group/card">
                     <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--brand-blue)]/5 text-[var(--brand-blue)] group-hover/card:bg-[var(--brand-blue)] group-hover/card:text-white transition-colors">
                       <CourseIcon icon={course.icon} className="h-8 w-8" />
                     </div>
@@ -110,8 +110,8 @@ export function CoursesSection() {
               key={index}
               onClick={() => emblaApi?.scrollTo(index)}
               className={`h-2.5 rounded-full transition-all duration-300 ${selectedIndex === index
-                  ? "w-8 bg-[var(--brand-blue)]"
-                  : "w-2.5 bg-[var(--brand-blue)]/20 hover:bg-[var(--brand-blue)]/50"
+                ? "w-8 bg-[var(--brand-blue)]"
+                : "w-2.5 bg-[var(--brand-blue)]/20 hover:bg-[var(--brand-blue)]/50"
                 }`}
               aria-label={`Ir para slide ${index + 1}`}
             />
