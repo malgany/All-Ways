@@ -34,7 +34,7 @@ export const heroContent: HeroContent = {
       medio: 'Confiança para falar, <span class="text-[var(--brand-red)]">segurança para se expressar</span>',
     },
     {
-      grande: "Começando do zero ou buscando fluência?",
+      grande: "Buscando fluência?",
       medio: 'Do básico ao avançado <span class="text-[var(--brand-red)]">no seu ritmo</span>',
     },
   ],
