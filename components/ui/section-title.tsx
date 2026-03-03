@@ -5,6 +5,7 @@ type SectionTitleProps = {
   title: string;
   description?: string;
   align?: "left" | "center";
+  tone?: "default" | "light";
   className?: string;
 };
 
@@ -13,8 +14,11 @@ export function SectionTitle({
   title,
   description,
   align = "left",
+  tone = "default",
   className,
 }: SectionTitleProps) {
+  const isLight = tone === "light";
+
   return (
     <div
       className={cn(
@@ -25,17 +29,39 @@ export function SectionTitle({
     >
       {eyebrow ? (
         <div className="inline-flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[var(--brand-red)]" />
-          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--brand-red)]">
+          <span
+            className={cn(
+              "h-2 w-2 rounded-full",
+              isLight ? "bg-[#ff5f80]" : "bg-[var(--brand-red)]",
+            )}
+          />
+          <p
+            className={cn(
+              "text-xs font-extrabold uppercase tracking-[0.16em]",
+              isLight ? "text-[#ff8ba4]" : "text-[var(--brand-red)]",
+            )}
+          >
             {eyebrow}
           </p>
         </div>
       ) : null}
-      <h2 className="font-display text-3xl leading-tight tracking-tight text-[var(--brand-blue)] sm:text-4xl">
+      <h2
+        className={cn(
+          "font-display text-3xl leading-tight tracking-tight sm:text-4xl",
+          isLight ? "text-white" : "text-[var(--brand-blue)]",
+        )}
+      >
         {title}
       </h2>
       {description ? (
-        <p className="text-base text-[var(--ink-soft)] sm:text-lg">{description}</p>
+        <p
+          className={cn(
+            "text-base sm:text-lg",
+            isLight ? "text-[#b8c3df]" : "text-[var(--ink-soft)]",
+          )}
+        >
+          {description}
+        </p>
       ) : null}
     </div>
   );

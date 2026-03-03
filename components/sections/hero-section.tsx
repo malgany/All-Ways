@@ -46,7 +46,7 @@ export function HeroSection() {
               width={400}
               height={500}
               priority
-              className="relative z-10 mx-auto h-auto w-full max-w-[24rem] object-contain drop-shadow-[0_24px_42px_rgba(29,56,117,0.3)]"
+              className="relative z-10 mx-auto h-auto w-full max-w-[24rem] object-contain"
             />
           </div>
         </div>

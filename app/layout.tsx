@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Lato, Montserrat } from "next/font/google";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 import { SITE_CONFIG } from "@/lib/config";
+
+config.autoAddCss = false;
 
 const displayFont = Montserrat({
   variable: "--font-display",

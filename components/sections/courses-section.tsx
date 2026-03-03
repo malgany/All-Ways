@@ -1,123 +1,140 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import { courses } from "@/lib/content";
-import { CourseIcon } from "@/components/courses/course-icon";
-import { Container } from "@/components/ui/container";
-import { SectionTitle } from "@/components/ui/section-title";
+import { useEffect, useState, useCallback, useRef } from "react";
+import Image from "next/image";
+
+const slides = [
+  {
+    id: 1,
+    title: "Inglês para Viagem",
+    description: "Prepare-se para aeroportos, hotéis e passeios.",
+    image: "/images/trilhas/travel.png"
+  },
+  {
+    id: 2,
+    title: "Inglês Tecnológico",
+    description: "Inglês para TI, mercado digital e reuniões online.",
+    image: "/images/trilhas/tech.png"
+  },
+  {
+    id: 3,
+    title: "Inglês para Conversação",
+    description: "Fale com mais confiança e naturalidade no dia a dia.",
+    image: "/images/trilhas/conversation.png"
+  },
+  {
+    id: 4,
+    title: "Inglês Básico",
+    description: "Comece do zero e construa uma base sólida.",
+    image: "/images/trilhas/basic.png"
+  },
+  {
+    id: 5,
+    title: "Inglês Intermediário",
+    description: "Expanda seu vocabulário e desenvolva fluência.",
+    image: "/images/trilhas/intermediate.png"
+  },
+  {
+    id: 6,
+    title: "Inglês Avançado",
+    description: "Domine estruturas complexas e alcance nível profissional.",
+    image: "/images/trilhas/advanced.png"
+  }
+];
 
 export function CoursesSection() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
-    loop: true,
-  });
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  const resetTimeout = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }, []);
 
   useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    setScrollSnaps(emblaApi.scrollSnapList());
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
+    resetTimeout();
+    if (autoPlay) {
+      timeoutRef.current = setTimeout(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 5000);
+    }
     return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
+      resetTimeout();
     };
-  }, [emblaApi, onSelect]);
+  }, [currentIndex, autoPlay, resetTimeout]);
 
-  useEffect(() => {
-    if (!emblaApi) return;
-    const interval = setInterval(() => {
-      if (emblaApi.canScrollNext()) {
-        emblaApi.scrollNext();
-      } else {
-        emblaApi.scrollTo(0);
-      }
-    }, 4000); // 4 sec autoplay
-    return () => clearInterval(interval);
-  }, [emblaApi]);
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index);
+    setAutoPlay(false);
+  };
 
   return (
-    <section id="cursos" className="bg-white py-16 sm:py-24 overflow-hidden">
-      <Container className="space-y-12">
-        <SectionTitle
-          eyebrow="O Curso"
-          title="Escolha sua Trilha de Inglês"
-          description="Todas as trilhas são personalizadas conforme seu nível e objetivo."
-          align="left"
-        />
+    <section id="cursos" className="relative h-[600px] lg:h-[700px] w-full overflow-hidden bg-black">
+      {slides.map((slide, index) => {
+        const isActive = index === currentIndex;
 
-        <div className="relative group">
-          <div className="overflow-hidden mix-blend-multiply" ref={emblaRef}>
-            <div className="flex -ml-6">
-              {courses.map((course) => (
-                <div
-                  key={course.id}
-                  className="min-w-0 flex-[0_0_100%] pl-6 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%]"
-                >
-                  <div className="flex h-full flex-col items-center text-center bg-[var(--sand)] rounded-2xl shadow-sm border border-[var(--sand-strong)] hover:border-[var(--brand-blue)] hover:shadow-md transition-all duration-300 p-10 group/card">
-                    <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--brand-blue)]/5 text-[var(--brand-blue)] group-hover/card:bg-[var(--brand-blue)] group-hover/card:text-white transition-colors">
-                      <CourseIcon icon={course.icon} className="h-8 w-8" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4">
-                      {course.name}
-                    </h3>
-                    <div className="w-full h-px bg-[var(--sand-strong)] mb-6 opacity-50" />
-                    <p className="text-[var(--ink-soft)] leading-relaxed flex-grow text-[1.05rem]">
-                      {course.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+        return (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] ${isActive
+              ? "opacity-100 translate-x-0 z-10"
+              : "opacity-0 -translate-x-12 z-0 pointer-events-none"
+              }`}
+          >
+            {/* Background Image */}
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+            {/* Dark Gradient Overlay for Readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+
+            {/* Overlay Text */}
+            <div className="absolute bottom-32 left-8 md:bottom-40 md:left-16 xl:left-24 max-w-3xl px-4">
+              <h2
+                className={`text-5xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 transition-all duration-1000 delay-300 transform ${isActive ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  }`}
+                style={{
+                  textShadow: "0 4px 24px rgba(0,0,0,0.5)"
+                }}
+              >
+                {slide.title}
+              </h2>
+              <p
+                className={`text-xl sm:text-2xl md:text-3xl text-[#e2e8f0] font-medium transition-all duration-1000 delay-500 transform ${isActive ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                  }`}
+                style={{
+                  textShadow: "0 2px 12px rgba(0,0,0,0.5)"
+                }}
+              >
+                {slide.description}
+              </p>
             </div>
           </div>
+        );
+      })}
 
+      {/* Navigation Indicators */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+        {slides.map((_, index) => (
           <button
-            onClick={scrollPrev}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg text-[var(--brand-blue)] hover:bg-[var(--brand-blue)] hover:text-white transition-all border border-[var(--sand-strong)] z-10 opacity-0 group-hover:opacity-100 focus:opacity-100 disabled:opacity-0 hidden sm:flex"
-            aria-label="Anterior"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
-          </button>
-
-          <button
-            onClick={scrollNext}
-            className="absolute -right-6 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg text-[var(--brand-blue)] hover:bg-[var(--brand-blue)] hover:text-white transition-all border border-[var(--sand-strong)] z-10 opacity-0 group-hover:opacity-100 focus:opacity-100 disabled:opacity-0 hidden sm:flex"
-            aria-label="Próximo"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
-          </button>
-        </div>
-
-        <div className="flex justify-center gap-2 pt-4">
-          {scrollSnaps.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi?.scrollTo(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${selectedIndex === index
-                ? "w-8 bg-[var(--brand-blue)]"
-                : "w-2.5 bg-[var(--brand-blue)]/20 hover:bg-[var(--brand-blue)]/50"
-                }`}
-              aria-label={`Ir para slide ${index + 1}`}
-            />
-          ))}
-        </div>
-      </Container>
+            key={index}
+            onClick={() => handleDotClick(index)}
+            aria-label={`Ir para slide ${index + 1}`}
+            className={`transition-all duration-500 rounded-full h-3 ${index === currentIndex
+              ? "w-10 bg-[var(--brand-blue)] shadow-[0_0_16px_rgba(56,96,214,0.9)]"
+              : "w-3 bg-white/40 hover:bg-white/70"
+              }`}
+          />
+        ))}
+      </div>
     </section>
   );
 }
