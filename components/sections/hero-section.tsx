@@ -93,7 +93,7 @@ export function HeroSection() {
               width={500}
               height={650}
               priority
-              className="relative z-10 mx-auto h-auto w-full max-w-[20rem] sm:max-w-[26rem] object-contain"
+              className="relative z-10 mx-auto h-auto w-full max-w-[20rem] sm:max-w-[26rem] object-contain [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]"
             />
           </div>
         </div>
