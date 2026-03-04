@@ -11,6 +11,12 @@ export function OfferSection() {
       <Container className="mx-auto flex max-w-5xl flex-col items-center">
         {/* Header container */}
         <div className="flex w-full max-w-4xl flex-col items-center space-y-2 text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 mb-2">
+            <span className="h-2 w-2 rounded-full bg-white opacity-80" />
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-white opacity-90">
+              Planos & Benefícios
+            </p>
+          </div>
           <h2
             className="font-display text-3xl leading-tight tracking-tight sm:text-[40px] text-white font-semibold"
             dangerouslySetInnerHTML={{ __html: offer.title }}
@@ -52,7 +58,7 @@ export function OfferSection() {
             </ul>
 
             <div className="w-full">
-              <div className="[&>button]:w-full [&>button]:py-4 [&>button]:text-sm sm:[&>button]:text-base [&>button]:shadow-lg [&>button]:shadow-black/10">
+              <div className="[&>button]:w-full [&>button]:whitespace-nowrap [&>button]:py-4 [&>button]:text-[13px] sm:[&>button]:text-[15px] [&>button]:shadow-lg [&>button]:shadow-black/10">
                 <ReferralModal />
               </div>
             </div>
