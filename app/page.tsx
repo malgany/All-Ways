@@ -13,9 +13,9 @@ export default function Home() {
       <SiteHeader />
       <main>
         <HeroSection />
+        <TestimonialsSection />
         <CoursesSection />
         <BenefitsSection />
-        <TestimonialsSection />
         <OfferSection />
         <FaqSection />
       </main>

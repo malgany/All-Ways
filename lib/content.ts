@@ -12,9 +12,9 @@ import type {
 
 export const navItems: NavItem[] = [
   { label: "Para Você", href: "#para-voce" },
+  { label: "Depoimentos", href: "#depoimentos" },
   { label: "O Curso", href: "#cursos" },
   { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Depoimentos", href: "#depoimentos" },
   { label: "FAQ", href: "#faq" },
 ];
 
