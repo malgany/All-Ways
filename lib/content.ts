@@ -161,21 +161,19 @@ export const testimonials: TestimonialItem[] = [
     name: "Gustavo Freitas",
     role: "Executivo Comercial",
     quote:
-      "A proposta de 'compre 1 leve 2' facilitou começar com meu filho. Hoje os dois estão evoluindo juntos.",
+      "A promoção 'Indique & Ganhe' me incentivou a convidar um colega de trabalho. Começamos juntos e foi excelente para o nosso desenvolvimento.",
   },
 ];
 
 export const offer: PlanOffer = {
-  title: "Oferta Especial: Compre 1, Leve 2",
+  title: "Oferta Especial: Indique & Ganhe",
   subtitle:
-    "Assine um plano anual e adicione uma segunda matrícula sem custo adicional na mensalidade.",
+    "Convide um amigo para estudar e, ao realizar a matrícula, os dois garantem matrícula 100% gratuita. Aprender inglês fica ainda melhor quando é junto.",
   rules: [
-    "Válido para novos alunos e planos anuais.",
-    "A segunda matrícula deve ser ativada em até 30 dias.",
-    "Oferta não cumulativa com outros descontos.",
-    "Opção ideal para casal, amigos ou responsável + criança.",
+    "Válido por tempo limitado.",
+    "Promoção exclusiva para novos alunos.",
   ],
-  ctaLabel: "Quero garantir a oferta",
+  ctaLabel: "QUERO INDICAR UM AMIGO",
 };
 
 export const faqItems: FaqItem[] = [
@@ -210,9 +208,9 @@ export const faqItems: FaqItem[] = [
       "Sim. Criamos programas in-company com trilhas por área e indicadores de evolução para o RH.",
   },
   {
-    question: "Como funciona a oferta Compre 1 Leve 2?",
+    question: "Como funciona a promoção Indique & Ganhe?",
     answer:
-      "Ao contratar um plano anual, você recebe uma segunda matrícula de igual duração sem custo de mensalidade.",
+      "Ao convidar um amigo e ele realizar a matrícula, tanto você quanto ele ganham 100% de gratuidade na matrícula.",
   },
   {
     question: "Como faço para começar?",

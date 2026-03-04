@@ -10,6 +10,7 @@ export function FaqSection() {
           eyebrow="FAQ"
           title="Dúvidas frequentes antes de começar."
           description="Se ainda restar alguma pergunta, fale com nosso time pelo WhatsApp."
+          align="center"
         />
 
         <div className="space-y-3">

@@ -10,6 +10,7 @@ export function TestimonialsSection() {
           eyebrow="Depoimentos"
           title="Resultados reais de alunos em diferentes objetivos."
           description="Feedback de quem já passou pelo programa e aplicou inglês na prática."
+          align="center"
         />
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

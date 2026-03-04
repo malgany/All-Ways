@@ -10,6 +10,7 @@ export function BenefitsSection() {
           eyebrow="Benefícios"
           title="A estrutura completa que acelera sua fluência e mantém sua constância."
           description="Tudo o que você precisa para estudar com clareza, ritmo e acompanhamento."
+          align="center"
         />
 
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
