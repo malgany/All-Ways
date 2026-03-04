@@ -166,14 +166,20 @@ export const testimonials: TestimonialItem[] = [
 ];
 
 export const offer: PlanOffer = {
-  title: "Oferta Especial: Indique & Ganhe",
+  title: "🔥 Indique um Amigo e os Dois<br />Estudam com <span class=\"text-[var(--brand-yellow)]\">Matrícula Grátis</span>",
   subtitle:
-    "Convide um amigo para estudar e, ao realizar a matrícula, os dois garantem matrícula 100% gratuita. Aprender inglês fica ainda melhor quando é junto.",
+    "Você indica um amigo <strong>e os dois</strong> economizam. Matrícula<br />de <strong class=\"text-[var(--brand-yellow)]\">R$39,90 totalmente gratuita</strong> para ambos.",
   rules: [
-    "Válido por tempo limitado.",
-    "Promoção exclusiva para novos alunos.",
+    "<strong>Sem custo</strong> nenhum para <strong>você</strong> e <strong>seu amigo</strong>.",
+    "Promoção <strong>mais usada</strong> pelos nossos <strong>alunos</strong>.",
+    "Apenas para as próximas <strong>20 indicações</strong>.",
   ],
-  ctaLabel: "QUERO INDICAR UM AMIGO",
+  howItWorks: [
+    "Você indica um amigo.",
+    "Ele faz a matrícula.",
+    "Os dois ganham matrícula gratuita.",
+  ],
+  ctaLabel: "QUERO GARANTIR A MATRÍCULA GRÁTIS",
 };
 
 export const faqItems: FaqItem[] = [

@@ -45,6 +45,7 @@ export type PlanOffer = {
   title: string;
   subtitle: string;
   rules: string[];
+  howItWorks: string[];
   ctaLabel: string;
 };
 
