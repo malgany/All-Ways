@@ -8,7 +8,7 @@ const slides = [
     id: 1,
     title: "Inglês para Viagem",
     description: "Prepare-se para aeroportos, hotéis e passeios.",
-    image: "/images/trilhas/travel.jpg"
+    image: "/images/trilhas/travel.png"
   },
   {
     id: 2,
