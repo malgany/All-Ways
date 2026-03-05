@@ -59,9 +59,10 @@ export function RotatingPhrases({
         <ul className="space-y-6" aria-label="Destaques">
           {items.map((item, idx) => (
             <li key={idx} className="space-y-2">
-              <h2 className="font-display text-[2rem] leading-tight text-[var(--brand-blue)]">
-                {item.grande}
-              </h2>
+              <h2
+                className="font-display text-[2rem] leading-tight text-[var(--brand-blue)]"
+                dangerouslySetInnerHTML={{ __html: item.grande }}
+              />
               <p
                 className="text-[1.1rem] font-bold text-[var(--brand-blue)]"
                 dangerouslySetInnerHTML={{ __html: item.medio }}
