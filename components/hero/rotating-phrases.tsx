@@ -23,10 +23,20 @@ export function RotatingPhrases({
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion || items.length <= 1) {
+    if (items.length <= 1) {
       return undefined;
     }
 
+    if (prefersReducedMotion) {
+      // Un-animated swap for reduced motion
+      const intervalId = window.setInterval(() => {
+        setActiveIndex((current) => (current + 1) % items.length);
+      }, intervalMs);
+
+      return () => window.clearInterval(intervalId);
+    }
+
+    // Animated swap for normal users
     const intervalId = window.setInterval(() => {
       setIsFadingOut(true);
       timeoutRef.current = window.setTimeout(() => {
@@ -50,26 +60,20 @@ export function RotatingPhrases({
 
   if (prefersReducedMotion) {
     return (
-      <div
-        className={cn(
-          "max-h-[60vh] overflow-auto rounded-xl border border-[var(--sand-strong)] bg-white/65 px-4 py-3",
-          className,
+      <div className={cn("space-y-4", className)} aria-live="polite">
+        {items[activeIndex].grande && (
+          <h1
+            className="font-display text-[clamp(2.2rem,5vw,4rem)] leading-[0.98] tracking-tight text-[var(--brand-blue)]"
+            dangerouslySetInnerHTML={{ __html: items[activeIndex].grande }}
+          />
         )}
-      >
-        <ul className="space-y-6" aria-label="Destaques">
-          {items.map((item, idx) => (
-            <li key={idx} className="space-y-2">
-              <h2
-                className="font-display text-[2rem] leading-tight text-[var(--brand-blue)]"
-                dangerouslySetInnerHTML={{ __html: item.grande }}
-              />
-              <p
-                className="text-[1.1rem] font-bold text-[var(--brand-blue)]"
-                dangerouslySetInnerHTML={{ __html: item.medio }}
-              />
-            </li>
-          ))}
-        </ul>
+        <p
+          className={cn(
+            "max-w-xl text-[clamp(1.05rem,1.6vw,1.45rem)] font-semibold leading-snug text-[var(--brand-blue)]",
+            !items[activeIndex].grande && "pt-8"
+          )}
+          dangerouslySetInnerHTML={{ __html: items[activeIndex].medio }}
+        />
       </div>
     );
   }
