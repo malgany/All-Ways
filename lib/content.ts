@@ -8,7 +8,19 @@ import type {
   SocialLink,
   StepItem,
   TestimonialItem,
+  BenefitItem,
 } from "@/lib/types";
+
+import {
+  faLaptopCode,
+  faUserTie,
+  faMapLocationDot,
+  faPuzzlePiece,
+  faClock,
+  faTrophy,
+  faBookOpenReader,
+  faHeadset,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const navItems: NavItem[] = [
   { label: "Para Você", href: "#para-voce" },
@@ -115,15 +127,47 @@ export const courses: CourseItem[] = [
   },
 ];
 
-export const benefits: string[] = [
-  "Aulas online ao vivo para tirar dúvidas em tempo real",
-  "Acompanhamento individual com foco na sua evolução",
-  "Plano de estudos adaptado ao seu objetivo",
-  "Curso flexível para o que você quer alcançar",
-  "Rotina flexível para quem trabalha ou estuda",
-  "Relatórios de progresso com metas objetivas",
-  "Materiais atualizados para cenários reais",
-  "Atendimento rápido pelo WhatsApp",
+export const benefits: BenefitItem[] = [
+  {
+    title: "Aulas online ao vivo",
+    description: "para tirar dúvidas em tempo real",
+    icon: faLaptopCode,
+  },
+  {
+    title: "Acompanhamento individual",
+    description: "com foco na sua evolução",
+    icon: faUserTie,
+  },
+  {
+    title: "Plano de estudos adaptado",
+    description: "ao seu objetivo",
+    icon: faMapLocationDot,
+  },
+  {
+    title: "Curso flexível",
+    description: "para o que você quer alcançar",
+    icon: faPuzzlePiece,
+  },
+  {
+    title: "Rotina flexível",
+    description: "para quem trabalha ou estuda",
+    icon: faClock,
+  },
+  {
+    title: "Relatórios de progresso",
+    description: "com metas objetivas",
+    icon: faTrophy,
+  },
+  {
+    title: "Materiais atualizados",
+    description: "para cenários reais",
+    icon: faBookOpenReader,
+  },
+  {
+    title: "Atendimento rápido",
+    description: "pelo WhatsApp",
+    icon: faHeadset,
+  },
 ];
 
 export const testimonials: TestimonialItem[] = [

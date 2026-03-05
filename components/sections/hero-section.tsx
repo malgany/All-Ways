@@ -67,9 +67,9 @@ export function HeroSection() {
               />
             </div>
 
-            <div className="absolute top-[35%] -right-[20%] sm:-right-[10%] z-0 w-32 sm:w-24 animate-float">
+            <div className="absolute top-[35%] -right-[10%] sm:-right-[10%] z-0 w-22 sm:w-24 animate-float">
               <Image
-                src="/images/emojis/estata-da-liberdade.png"
+                src="/images/emojis/estatua-da-liberdade.png"
                 alt="Estátua da Liberdade"
                 width={192}
                 height={192}
