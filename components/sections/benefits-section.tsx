@@ -8,9 +8,9 @@ export function BenefitsSection() {
     <section id="diferenciais" className="relative overflow-hidden bg-[var(--sand)] py-16 sm:py-24">
       <Container className="relative z-10 space-y-12 sm:space-y-16">
         <SectionTitle
-          eyebrow="Benefícios"
-          title="A estrutura completa que acelera sua fluência e mantém sua constância"
-          description="Tudo o que você precisa para estudar com clareza, ritmo e acompanhamento."
+          eyebrow="Vantagens"
+          title="Seu inglês evoluindo a cada semana"
+          description="Plano estruturado, prática real e suporte próximo para você sentir progresso de verdade."
           align="center"
         />
 

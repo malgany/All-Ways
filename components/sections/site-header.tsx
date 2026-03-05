@@ -23,7 +23,7 @@ export function SiteHeader() {
             alt="Web English"
             width={228}
             height={56}
-            className="h-[3.15rem] w-auto object-contain sm:h-[3.35rem]"
+            className="h-[3.15rem] w-auto object-contain sm:h-[4.45rem]"
           />
         </Link>
 
