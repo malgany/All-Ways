@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-  name: "Web English",
+  name: "All Ways",
   description:
     "Aulas online com professores e suporte de IA para acelerar seu aprendizado de inglês.",
   url: "https://webenglish.local",

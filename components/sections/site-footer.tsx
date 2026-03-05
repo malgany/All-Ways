@@ -11,7 +11,7 @@ export function SiteFooter() {
           <Link href="#para-voce" className="inline-block">
             <Image
               src="/logos/logo-white.png"
-              alt="Web English"
+              alt="All Ways"
               width={196}
               height={48}
               className="h-11 w-auto object-contain"

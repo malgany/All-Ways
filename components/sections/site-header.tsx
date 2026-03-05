@@ -20,7 +20,7 @@ export function SiteHeader() {
         >
           <Image
             src="/logos/logo.png"
-            alt="Web English"
+            alt="All Ways"
             width={228}
             height={56}
             className="h-[3.15rem] w-auto object-contain sm:h-[4.45rem]"

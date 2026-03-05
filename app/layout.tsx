@@ -21,10 +21,10 @@ const bodyFont = Lato({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
-  title: "Web English | Ganhe confiança no inglês",
+  title: "All Ways",
   description: SITE_CONFIG.description,
   openGraph: {
-    title: "Web English",
+    title: SITE_CONFIG.name,
     description: SITE_CONFIG.description,
     type: "website",
   },
@@ -49,3 +49,4 @@ export default function RootLayout({
     </html>
   );
 }
+
