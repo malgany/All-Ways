@@ -8,7 +8,7 @@ const slides = [
     id: 1,
     title: "Inglês para Viagem",
     description: "Prepare-se para aeroportos, hotéis e passeios.",
-    image: "/images/trilhas/travel.png"
+    image: "/images/trilhas/travel.jpg"
   },
   {
     id: 2,
@@ -20,25 +20,25 @@ const slides = [
     id: 3,
     title: "Inglês para Conversação",
     description: "Fale com mais confiança e naturalidade no dia a dia.",
-    image: "/images/trilhas/conversation.png"
+    image: "/images/trilhas/conversation.jpg"
   },
   {
     id: 4,
     title: "Inglês Básico",
     description: "Comece do zero e construa uma base sólida.",
-    image: "/images/trilhas/basic.png"
+    image: "/images/trilhas/basic.jpg"
   },
   {
     id: 5,
     title: "Inglês Intermediário",
     description: "Expanda seu vocabulário e desenvolva fluência.",
-    image: "/images/trilhas/intermediate.png"
+    image: "/images/trilhas/intermediate.jpg"
   },
   {
     id: 6,
     title: "Inglês Avançado",
     description: "Domine estruturas complexas e alcance nível profissional.",
-    image: "/images/trilhas/advanced.png"
+    image: "/images/trilhas/advanced.jpg"
   }
 ];
 

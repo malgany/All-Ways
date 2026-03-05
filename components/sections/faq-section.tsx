@@ -22,9 +22,10 @@ export function FaqSection() {
               <summary className="cursor-pointer list-none pr-6 text-[1rem] font-extrabold text-[var(--brand-blue)] marker:hidden">
                 {faq.question}
               </summary>
-              <p className="mt-3 border-t border-[var(--sand-strong)] pt-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-                {faq.answer}
-              </p>
+              <p
+                className="mt-3 border-t border-[var(--sand-strong)] pt-3 text-sm leading-relaxed text-[var(--ink-soft)]"
+                dangerouslySetInnerHTML={{ __html: faq.answer }}
+              />
             </details>
           ))}
         </div>

@@ -255,7 +255,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Como faço para começar?",
     answer:
-      "Basta preencher o formulário no início da página. Nossa equipe entra em contato para definição da melhor turma.",
+      'Basta preencher o <a href="#para-voce" class="text-[var(--brand-red)] font-bold hover:underline">formulário disponível na página</a>. Após o envio, nossa equipe entrará em contato para ajudar na escolha da melhor turma.',
   },
 ];
 
