@@ -47,17 +47,27 @@ export function HeroSection() {
               />
             </div>
 
+            <div className="absolute top-[45%] -left-[15%] sm:-left-[10%] z-10 w-20 sm:w-28 animate-float">
+              <Image
+                src="/images/emojis/formatura.png"
+                alt="Formatura"
+                width={112}
+                height={112}
+                className="h-auto w-full object-contain"
+              />
+            </div>
+
             <div className="absolute top-[10%] -right-[-15%] sm:-right-[-10%] z-20 w-16 sm:w-30 animate-float-delayed">
               <Image
-                src="/images/emojis/bandeira-reino-unido.png"
-                alt="Bandeira Reino Unido"
+                src="/images/emojis/balao-de-fala.png"
+                alt="Balão de fala"
                 width={80}
                 height={80}
                 className="h-auto w-full object-contain"
               />
             </div>
 
-            <div className="absolute top-[30%] -right-[20%] sm:-right-[25%] z-0 w-32 sm:w-48 animate-float">
+            <div className="absolute top-[35%] -right-[20%] sm:-right-[10%] z-0 w-32 sm:w-24 animate-float">
               <Image
                 src="/images/emojis/estata-da-liberdade.png"
                 alt="Estátua da Liberdade"

@@ -116,14 +116,14 @@ export const courses: CourseItem[] = [
 ];
 
 export const benefits: string[] = [
-  "Aulas online ao vivo com professores especialistas",
-  "Suporte com IA para revisão e prática entre aulas",
+  "Aulas online ao vivo para tirar dúvidas em tempo real",
+  "Acompanhamento individual com foco na sua evolução",
   "Plano de estudos adaptado ao seu objetivo",
-  "Feedback em pronúncia, escrita e fluidez",
+  "Curso flexível para o que você quer alcançar",
   "Rotina flexível para quem trabalha ou estuda",
   "Relatórios de progresso com metas objetivas",
   "Materiais atualizados para cenários reais",
-  "Atendimento rápido por WhatsApp",
+  "Atendimento rápido pelo WhatsApp",
 ];
 
 export const testimonials: TestimonialItem[] = [

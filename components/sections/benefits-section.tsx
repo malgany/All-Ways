@@ -8,7 +8,7 @@ export function BenefitsSection() {
       <Container className="space-y-10">
         <SectionTitle
           eyebrow="Benefícios"
-          title="A estrutura completa que acelera sua fluência e mantém sua constância."
+          title="A estrutura completa que acelera sua fluência e mantém sua constância"
           description="Tudo o que você precisa para estudar com clareza, ritmo e acompanhamento."
           align="center"
         />

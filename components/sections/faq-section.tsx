@@ -8,7 +8,7 @@ export function FaqSection() {
       <Container className="space-y-10">
         <SectionTitle
           eyebrow="FAQ"
-          title="Dúvidas frequentes antes de começar."
+          title="Dúvidas frequentes antes de começar"
           description="Se ainda restar alguma pergunta, fale com nosso time pelo WhatsApp."
           align="center"
         />

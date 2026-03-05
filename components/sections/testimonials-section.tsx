@@ -9,7 +9,7 @@ export function TestimonialsSection() {
       <Container className="relative z-10">
         <SectionTitle
           eyebrow="Depoimentos"
-          title="Resultados reais de alunos em diferentes objetivos."
+          title="Resultados reais de alunos em diferentes objetivos"
           description="Feedback de quem já passou pelo programa e aplicou inglês na prática."
           align="center"
         />
