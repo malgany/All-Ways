@@ -230,42 +230,32 @@ export const faqItems: FaqItem[] = [
   {
     question: "As aulas são ao vivo ou gravadas?",
     answer:
-      "As aulas principais são ao vivo, com materiais complementares gravados para revisão quando você quiser.",
+      "As aulas são totalmente ao vivo e você tem contato direto pelo WhatsApp para tirar dúvidas sempre que precisar.",
   },
   {
     question: "Preciso ter nível mínimo para entrar?",
     answer:
-      "Não. Temos trilhas do básico ao avançado, com nivelamento inicial para montar a rota certa para você.",
+      "Não precisa. Você escolhe o curso ou tema que quer começar (viagem, tecnologia, conversação ou nível básico, intermediário ou avançado) e já inicia. Sem prova de nivelamento, direto ao ponto.",
   },
   {
     question: "Qual a duração de cada aula?",
     answer:
-      "As aulas ao vivo variam entre 45 e 60 minutos, de acordo com o plano e objetivo definido.",
-  },
-  {
-    question: "Como funciona o suporte de IA?",
-    answer:
-      "Você recebe atividades guiadas, prática de vocabulário e revisão de textos, sempre alinhado ao conteúdo da sua trilha.",
+      "São 2 aulas por semana, com 45 minutos cada. Se preferir, você pode optar por 1 aula semanal de 1h30. A escolha é sua.",
   },
   {
     question: "Posso fazer aula pelo celular?",
     answer:
-      "Sim. Plataforma e materiais funcionam em celular, tablet e desktop sem necessidade de instalação complexa.",
-  },
-  {
-    question: "Existe plano para empresas?",
-    answer:
-      "Sim. Criamos programas in-company com trilhas por área e indicadores de evolução para o RH.",
+      "Sim. Você pode assistir às aulas pelo celular, computador ou tablet. Escolha o aparelho que for mais prático para você.",
   },
   {
     question: "Como funciona a promoção Indique & Ganhe?",
     answer:
-      "Ao convidar um amigo e ele realizar a matrícula, tanto você quanto ele ganham 100% de gratuidade na matrícula.",
+      "Ao convidar um amigo e ele realizar a matrícula, tanto você quanto ele ganham 100% de gratuidade na taxa de matrícula.",
   },
   {
     question: "Como faço para começar?",
     answer:
-      "Basta preencher o formulário de lead. Nossa equipe entra em contato para nivelamento e definição da melhor turma.",
+      "Basta preencher o formulário no início da página. Nossa equipe entra em contato para definição da melhor turma.",
   },
 ];
 
