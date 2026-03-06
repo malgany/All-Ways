@@ -2,17 +2,17 @@
 
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/cn";
-import { leadSchema } from "@/lib/validation";
+import { LEAD_SOURCES, leadSchema, type LeadSource } from "@/lib/validation";
 
 type LeadFormProps = {
-  id?: string;
-  source?: string;
-  title?: string;
-  description?: string;
-  buttonLabel?: string;
   badgeLabel?: string;
+  buttonLabel?: string;
   className?: string;
+  description?: string;
+  id?: string;
   showHeader?: boolean;
+  source?: LeadSource;
+  title?: string;
 };
 
 type FieldErrors = Partial<Record<"name" | "email" | "phone", string>>;
@@ -46,8 +46,8 @@ function formatPhone(value: string) {
 
 export function LeadForm({
   id,
-  source = "landing-page",
-  title = "Receba uma aula diagnóstico gratuita",
+  source = LEAD_SOURCES.hero,
+  title = "Receba uma aula diagnostico gratuita",
   description = "Preencha seus dados e nosso time retorna via WhatsApp.",
   buttonLabel = "Quero falar com a equipe",
   badgeLabel,
@@ -122,7 +122,7 @@ export function LeadForm({
       setMessage(
         error instanceof Error
           ? error.message
-          : "Não foi possível enviar agora. Tente novamente.",
+          : "Nao foi possivel enviar agora. Tente novamente.",
       );
     }
   }

@@ -6,7 +6,6 @@ import type {
   NavItem,
   PlanOffer,
   SocialLink,
-  StepItem,
   TestimonialItem,
   BenefitItem,
 } from "@/lib/types";

@@ -1,4 +1,8 @@
 import { NextResponse } from "next/server";
+import {
+  buildCrmLeadPayload,
+  getLeadSuccessMessage,
+} from "@/lib/lead-integration";
 import { leadSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
@@ -27,37 +31,49 @@ export async function POST(request: Request) {
     );
   }
 
-  const webhookUrl = process.env.WEBHOOK_URL;
+  const ingestUrl = process.env.CRM_SIMPLE_INGEST_URL;
+  const ingestToken = process.env.CRM_SIMPLE_INGEST_TOKEN;
 
-  if (!webhookUrl) {
+  if (!ingestUrl || !ingestToken) {
     return NextResponse.json(
       {
         ok: false,
         message:
-          "Integração indisponível no momento. Configure WEBHOOK_URL no ambiente.",
+          "Integração indisponível no momento. Configure CRM_SIMPLE_INGEST_URL e CRM_SIMPLE_INGEST_TOKEN.",
       },
       { status: 500 },
     );
   }
 
   try {
-    const webhookResponse = await fetch(webhookUrl, {
+    const submittedAt = new Date().toISOString();
+    const crmResponse = await fetch(ingestUrl, {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${ingestToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        ...parsed.data,
-        submittedAt: new Date().toISOString(),
-      }),
+      body: JSON.stringify(buildCrmLeadPayload(parsed.data, submittedAt)),
       cache: "no-store",
     });
 
-    if (!webhookResponse.ok) {
+    let crmPayload: { message?: string; ok?: boolean } | null = null;
+
+    try {
+      crmPayload = (await crmResponse.json()) as {
+        message?: string;
+        ok?: boolean;
+      };
+    } catch {
+      crmPayload = null;
+    }
+
+    if (!crmResponse.ok || !crmPayload?.ok) {
       return NextResponse.json(
         {
           ok: false,
           message:
+            crmPayload?.message ||
             "Não foi possível registrar seu lead agora. Tente novamente em instantes.",
         },
         { status: 502 },
@@ -66,7 +82,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       ok: true,
-      message: "Recebemos seus dados. Em breve entraremos em contato.",
+      message: getLeadSuccessMessage(parsed.data.source),
     });
   } catch {
     return NextResponse.json(

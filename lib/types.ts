@@ -1,3 +1,5 @@
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
 export type NavItem = {
   label: string;
   href: string;
@@ -67,5 +69,5 @@ export type SocialLink = {
 export type BenefitItem = {
   title: string;
   description: string;
-  icon: any;
+  icon: IconDefinition;
 };
